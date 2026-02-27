@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<h2>Student: {{ student[1] }} | Class: {{ student[2] }}</h2>
+<table border="1">
+    <tr>
+        <th>Month</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    {% for fee in fees %}
+    <tr>
+        <td>{{ fee[2] }}</td>
+        <td>{{ fee[3] }}</td>
+        <td>{{ fee[4] }}</td>
+        <td>
+            {% if fee[4] != 'Paid' %}
+                <a href="/pay/{{ fee[0] }}">Pay Now</a>
+            {% else %}
+                <a href="/receipt/{{ fee[0] }}">Download Receipt</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
